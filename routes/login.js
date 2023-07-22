@@ -49,7 +49,6 @@ passport.use(
 //which in this case is storing the user's ID
 //
 passport.serializeUser(function (user, done) {
-  console.log('__serializing__', user);
   done(null, {
     id: user.id,
     displayName: user.displayName,
@@ -62,7 +61,6 @@ passport.serializeUser(function (user, done) {
 //  The req.user property is then set to the yielded information.
 
 passport.deserializeUser(function (user, done) {
-  console.log('__deserializing__', user);
   done(null, user);
 });
 

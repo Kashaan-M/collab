@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const {
   createProject,
-  getProjectDetail,
+  getProjectDetails,
   getProjects,
-  getMoreProject,
-} = require('../controllers/projects');
+  getMoreProjects,
+  getUserProjects,
+} = require('../controllers/projects/index');
 const Joi = require('joi');
 const firstValidate = require('../middlewares/firstValidate');
 
@@ -31,8 +32,9 @@ const singleSchema = Joi.object({
   project: Joi.number().integer().message('bad request'),
 });
 router.post('/', firstValidate(schema), createProject);
-router.post('/project/detail', firstValidate(singleSchema), getProjectDetail);
-router.post('/more', getMoreProject);
+router.post('/project/detail', firstValidate(singleSchema), getProjectDetails);
+router.post('/more', getMoreProjects);
 router.get('/', getProjects);
+router.get('/myprojects', getUserProjects);
 
 module.exports = router;
