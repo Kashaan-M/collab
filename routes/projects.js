@@ -1,3 +1,4 @@
+/** @typedef {import("../controllers/projects/getUserProjects")}*/
 const router = require('express').Router();
 const {
   createProject,

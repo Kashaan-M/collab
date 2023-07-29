@@ -70,6 +70,9 @@ app.post('/api/logout', (req, res, next) => {
 app.use('/api/signup', signUpRouter);
 app.use('/api/projects', projectsRouter);
 app.use('/api/comment', commentRouter);
+app.get('/api/test', (req, res) => {
+  res.status(200).json({ cookie: req.headers.cookie });
+});
 // error handling
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

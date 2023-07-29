@@ -1,3 +1,4 @@
+const { basicRateLimiter } = require('../middlewares/');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcryptjs');
@@ -83,6 +84,7 @@ const loginSchema = Joi.object({
 router.post(
   '/',
   firstValidate(loginSchema),
+  basicRateLimiter, // limit login requests to 10 requests per hr for the respective user. Prevents Brute force attacks
   passport.authenticate('local', {
     successMessage: 'success',
     failureMessage: true,

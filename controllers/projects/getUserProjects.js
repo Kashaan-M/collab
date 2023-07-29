@@ -5,6 +5,7 @@ const {
 const { BadRequestError } = require('../../errors');
 
 /**
+ * @module getUserProjects
  * returns all projects which belong to user plus no of comments on a particular project
  * we only include title, and id of project in the return variable "projects"
  */
